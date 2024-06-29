@@ -13,17 +13,23 @@ const initialState = {
     },
 };
 
+// const rootReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'tasks/addTask':
+//             return {
+//                 ...state,
+//                 tasks:[...state.tasks, action.payload],
+//             }
+
+//             default:
+//                 return state;
+//         }
+//     };
+
+// export const store = createStore()
+
 const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'tasks/addTask':
-            return {
-                ...state,
-                tasks:[...state.tasks, action.payload],
-            }
+    return state;
+};
 
-            default:
-                return state;
-        }
-    };
-
-export const store = createStore()
+export const store = createStore(rootReducer)
