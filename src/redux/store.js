@@ -1,35 +1,13 @@
-import { legacy_createStore as createStore} from 'redux'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { tasksReducers } from './tasksSlice'
+import { filtersReducers } from './filterSlice'
 
-const initialState = {
-    tasks: [
-        { id: 0, text: "Learn HTML and CSS", completed: true },
-        { id: 1, text: "Get good at JavaScript", completed: true },
-        { id: 2, text: "Master React", completed: false },
-        { id: 3, text: "Discover Redux", completed: false },
-        { id: 4, text: "Build amazing apps", completed: false },
-    ],
-    filters: {
-        status: "all",
-    },
-};
 
-// const rootReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case 'tasks/addTask':
-//             return {
-//                 ...state,
-//                 tasks:[...state.tasks, action.payload],
-//             }
 
-//             default:
-//                 return state;
-//         }
-//     };
+const reducers = combineReducers({
+    tasks: tasksReducers,
+    filter: filtersReducers
+})
 
-// export const store = createStore()
 
-const rootReducer = (state = initialState, action) => {
-    return state;
-};
-
-export const store = createStore(rootReducer)
+export const store = configureStore({reducer: reducers})
